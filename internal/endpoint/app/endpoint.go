@@ -23,7 +23,6 @@ func (a *App) Start() error {
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	e.Use(middleware.CSRF())
 	e.Use(middleware.Gzip())
 
 	a.logger.Info().Msg("Starting server on " + config.ADDR)
