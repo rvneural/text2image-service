@@ -21,11 +21,10 @@ func NewApp(text2ImageHadler Text2ImageHadler, logger *zerolog.Logger) *App {
 func (a *App) Start() error {
 	e := echo.New()
 
-	e.Use(middleware.KeyAuth(func(key string, c echo.Context) (bool, error) {
-		return key == config.BEARER_KEY, nil
-	}))
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.Use(middleware.CSRF())
+	e.Use(middleware.Gzip())
 
 	a.logger.Info().Msg("Starting server on " + config.ADDR)
 
