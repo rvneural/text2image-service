@@ -51,7 +51,13 @@ func (h *Handler) HandleRequest(c echo.Context) error {
 	response.Image.Seed = seed
 
 	if request.Operation_ID != "" {
-		byteResponse, _ := json.Marshal(response)
+		dbResult := client.DBResult{
+			Prompt:    request.Prompt,
+			Seed:      request.Seed,
+			B64string: b64Image,
+			Name:      "generated_image.jpg",
+		}
+		byteResponse, _ := json.Marshal(dbResult)
 		go h.dbWorker.SetResult(request.Operation_ID, byteResponse)
 	}
 

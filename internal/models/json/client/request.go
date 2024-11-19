@@ -7,3 +7,10 @@ type Request struct {
 	WidthRatio   string `json:"widthRatio" xml:"widthRatio" form:"widthRatio"`
 	HeightRatio  string `json:"heightRatio" xml:"heightRatio" form:"heightRatio"`
 }
+
+type DBResult struct {
+	Prompt    string `json:"prompt"`
+	Seed      string `json:"seed"`
+	B64string string `json:"image"`
+	Name      string `json:"name"`
+}
