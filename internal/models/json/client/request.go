@@ -6,7 +6,7 @@ type Request struct {
 	Seed         string `json:"seed" xml:"seed" form:"seed"`
 	WidthRatio   string `json:"widthRatio" xml:"widthRatio" form:"widthRatio"`
 	HeightRatio  string `json:"heightRatio" xml:"heightRatio" form:"heightRatio"`
-	UserID       string `json:"user_id" xml:"user_id" form:"user_id"`
+	UserID       int    `json:"user_id" xml:"user_id" form:"user_id"`
 }
 
 type DBResult struct {
