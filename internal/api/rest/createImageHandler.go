@@ -41,6 +41,7 @@ func (h *Handler) HandleRequest(c echo.Context) error {
 	b64Image, seed, err := h.service.ConvertTextToImage(request.Prompt, request.Seed,
 		request.WidthRatio, request.HeightRatio)
 
+	request.Seed = seed
 	if err != nil {
 		h.logger.Error().Msg("Error generating image: " + err.Error())
 		request.Prompt = err.Error()
